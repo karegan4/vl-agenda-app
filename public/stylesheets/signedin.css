@@ -1,0 +1,20 @@
+head, body, footer{
+    background-color: rgb(188, 153, 242);
+}
+h1 {
+    font-family: "Marker felt", fantasy;
+}
+a{
+    color: rgb(232, 181, 255)
+}
+.sidenav {
+    height: 100%;
+    width: 160px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #793fc5;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
