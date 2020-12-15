@@ -52,6 +52,8 @@ background-color: white;
 <center><h2 style="color: rgb(255, 244, 94);"> Dashboard: </h2>
 <a href="/courses"> View your classes</a> <br><br>
 <a href="/courses/new"> Add a class </a> <br><br>
+<a href="/assignments">View your assignments list</a><br><br>
+<a href="/assignments/new">Add a new assignment</a><br><br>
 <%= link_to "#{current_user.name}'s profile", user_path(current_user)%><br><br><br>
 <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
     <input type=submit value='Log Out'>

@@ -1,0 +1,11 @@
+<head>
+<link rel="stylesheet"  type="text/css" href="/stylesheets/signedin.css">
+</head>
+<h1> New assignment created!</h1>
+
+<h3> <%= @assignment.assignment_type%></h3>
+<h3><%= @assignment.assignment_name %></h3>
+<p> <strong> Instructions: </strong><%= @assignment.instructions %></p>
+<p> <strong>Due Date: </strong><%= @assignment.due_date %></p>
+<br><br>
+<a href="/assignments">Click here to view all assignments</a>

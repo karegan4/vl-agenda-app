@@ -16,6 +16,9 @@ Rails.application.routes.draw do
   resources :courses, only: [:index, :show, :new, :create, :edit, :update]
   patch 'courses/:id', to: 'courses#update'
 
+  resources :assignments, only: [:index, :show, :new, :create, :edit, :update]
+  patch 'assignments/:id', to: 'assignments#update'
+
   get '/error', to: 'users#error'
   get '/allusers', to: 'users#all'
 

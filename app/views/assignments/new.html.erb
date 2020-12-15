@@ -1,0 +1,20 @@
+<head>
+<link rel="stylesheet"  type="text/css" href="/stylesheets/signedin.css">
+</head>
+<h1> Add a new assignment </h1>
+<%= form_tag assignments_path do %>
+
+    <label>Assignment Type</label><br>
+    <%= text_field_tag :assignment_type %><br>
+
+    <label>Assignment Name:</label><br>
+    <%= text_field_tag :assignment_name %><br>
+
+    <label> Assignment Instructions:</label><br>
+    <%= text_area_tag :instructions %><br>
+
+    <label>Due Date</label><br>
+    <%= date_field_tag :due_date %> <br><br>
+  
+    <%= submit_tag "Create Assignment" %>
+<% end %>
