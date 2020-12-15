@@ -1,0 +1,10 @@
+<h1> Add a new class </h1>
+<%= form_tag courses_path do %>
+    <label>Class Name:</label><br>
+    <%= text_field_tag :course_name %><br>
+  
+    <label>Teacher Name</label><br>
+    <%= text_area_tag :teacher_name %><br>
+
+    <%= submit_tag "Create Class" %>
+  <% end %>

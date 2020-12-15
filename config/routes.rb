@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create', as: 'session'
   post '/session', to: 'sessions#destroy'
 
+  resources :courses, only: [:index, :show, :new, :create, :edit, :update]
+  patch 'courses/:id', to: 'courses#update'
+
   get '/error', to: 'users#error'
   get '/allusers', to: 'users#all'
 
