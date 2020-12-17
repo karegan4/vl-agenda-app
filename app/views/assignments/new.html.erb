@@ -2,19 +2,21 @@
 <link rel="stylesheet"  type="text/css" href="/stylesheets/signedin.css">
 </head>
 <h1> Add a new assignment </h1>
-<%= form_tag assignments_path do %>
+<%= form_for(@assignment) do |f| %>
 
-    <label>Assignment Type</label><br>
-    <%= text_field_tag :assignment_type %><br>
+    <%= f.label :assignment_type, "Assignment Type:" %><br>
+    <%= f.text_field :assignment_type %><br>
 
-    <label>Assignment Name:</label><br>
-    <%= text_field_tag :assignment_name %><br>
+    <%= f.label :assignment_name, "Assignment Name:" %><br>
+    <%= f.text_field :assignment_name %><br>
 
-    <label> Assignment Instructions:</label><br>
-    <%= text_area_tag :instructions %><br>
+    <%= f.label :instructions, "Assignment Instructions:" %><br>
+    <%= f.text_area :instructions %><br>
 
-    <label>Due Date</label><br>
-    <%= date_field_tag :due_date %> <br><br>
+    <%= f.label :due_date, "Due Date" %><br>
+    <%= f.date_field :due_date %> <br><br>
+
+    <%= f.hidden_field :user_id, :value => session[:user_id] %>
   
-    <%= submit_tag "Create Assignment" %>
-<% end %>
+    <%= f.submit %>
+    <% end %>

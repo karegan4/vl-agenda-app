@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/users/:id/edit', to: 'users#edit', as: 'edit_user'
 
 
+
   get '/login', to: 'sessions#new', as: 'login'
   post '/login', to: 'sessions#create', as: 'session'
   post '/session', to: 'sessions#destroy'
@@ -26,5 +27,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create, :show]
 
+  get '/auth/facebook/callback' => 'sessions#omniauth'
 
+  get '/users/home', to: "users#home"
 end

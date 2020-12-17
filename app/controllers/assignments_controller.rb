@@ -1,6 +1,6 @@
 class AssignmentsController < ApplicationController
     def index
-        @assignments = Assignment.all
+        @assignments = current_user.assignments
     end
 
     def show
@@ -12,13 +12,12 @@ class AssignmentsController < ApplicationController
     end
 
     def create
-        @assignment = Assignment.new
-        @assignment.assignment_name = params[:assignment_name]
-        @assignment.assignment_type = params[:assignment_type]
-        @assignment.instructions = params[:instructions]
-        @assignment.due_date = params[:due_date]
-        @assignment.save
-        redirect_to assignment_path(@assignment)
+        @assignment = Assignment.create(assignment_params)
+        if @assignment.save
+            redirect_to assignment_path(@assignment)
+        else
+            render :new
+        end
     end
 
     def edit
@@ -27,8 +26,17 @@ class AssignmentsController < ApplicationController
 
     def update
         @assignment = Assignment.find(params[:id])
-        @assignment.update(params.require(:assignment).permit(:assignment_name, :assignment_type, :instructions, :due_date))
+        @assignment.update(assignment_params)
         redirect_to assignment_path(@assignment)
+    end
+
+    def destroy
+    end
+
+    private
+    
+    def assignment_params
+        params.require(:assignment).permit(:assignment_name, :assignment_type, :instructions, :due_date, :user_id)
     end
 
 

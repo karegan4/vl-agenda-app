@@ -1,7 +1,8 @@
 class CoursesController < ApplicationController
 
     def index
-        @courses = Course.all
+
+        @courses = current_user.courses
     end
 
     def show
@@ -13,11 +14,12 @@ class CoursesController < ApplicationController
     end
 
     def create
-        @course = Course.new
-        @course.course_name = params[:course_name]
-        @course.teacher_name = params[:teacher_name]
-        @course.save
-        redirect_to course_path(@course)
+        @course = Course.create(course_params)
+        if @course.save
+            redirect_to course_path(@course)
+        else
+            render :new
+        end
     end
 
     def edit
@@ -26,7 +28,16 @@ class CoursesController < ApplicationController
 
     def update
         @course = Course.find(params[:id])
-        @course.update(params.require(:course).permit(:course_name, :teacher_name))
+        @course.update(course_params)
         redirect_to course_path(@course)
+    end
+
+    def destroy
+    end
+
+    private
+
+    def course_params
+        params.require(:course).permit(:course_name, :teacher_name, :user_id)
     end
 end

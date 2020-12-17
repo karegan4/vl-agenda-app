@@ -2,12 +2,15 @@
 <link rel="stylesheet"  type="text/css" href="/stylesheets/signedin.css">
 </head>
 <h1> Add a new class </h1>
-<%= form_tag courses_path do %>
-    <label>Class Name:</label><br>
-    <%= text_field_tag :course_name %><br>
-  
-    <label>Teacher Name</label><br>
-    <%= text_area_tag :teacher_name %><br>
+<%= form_for(@course) do |f| %>
+  <%= f.label :course_name, "Class Name:" %>
+  <%= f.text_field :course_name %><br>
 
-    <%= submit_tag "Create Class" %>
+  <%= f.label :teacher_name, "Teacher:" %>
+  <%= f.text_field :teacher_name %><br>
+
+  <%= f.hidden_field :user_id, :value => session[:user_id] %>
+  
+  <%= f.submit %>
   <% end %>
+

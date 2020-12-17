@@ -4,7 +4,15 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :current_user
 
-  private
+    #returns true if there is a user_id in the session hash, indicating a user is signed in
+  def logged_in?
+    !!session[:user_id]
+  end
+
+    #returns the instance of a user that is signed in, assigns them to @current_user
+  def current_user
+    @current_user ||=User.find_by(id: session[:user_id])
+  end
 
   def verified_user
     redirect_to '/' unless user_is_authenticated
@@ -14,7 +22,6 @@ class ApplicationController < ActionController::Base
     !!current_user
   end
 
-  def current_user
-    User.find_by(id: session[:user_id])
-  end
+
+
 end
