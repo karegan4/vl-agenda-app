@@ -1,6 +1,7 @@
 <head>
 <link rel="stylesheet"  type="text/css" href="/stylesheets/signedin.css">
 </head>
-<% @assignments.each do |assignment| %>
-    <div><%= assignment.assignment_name %></div>
-<% end %>
+
+<% @assignments.each do |assignment|%>
+    <p> <strong> <%= assignment.course_name %> </strong> - <%=assignment.assignment_name%> </p>
+    <%end%>

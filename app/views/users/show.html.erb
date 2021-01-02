@@ -9,40 +9,63 @@
 
 <body>
 <center>
-<h1 style="font-size:14pt"> Weekly To-Do Calendar </h1>
+<h1 style="font-size:14pt"> Your Classes </h1>
 <table>
 <style> 
-tr{ padding: 100px;
 
+tr{ padding: 50px;
 color: white
+
 }
 tr{
     background-color: rgb(167, 25, 255);
 }
+
 td{
 background-color: white;
 color: black;
+padding: 50px;
 }
-
+a{ color: white}
 </style>
-    <tr>
-        <th> Monday </th>
-        <th> Tuesday </th>
-        <th> Wednesday </th>
-        <th> Thursday </th>
-        <th> Friday </th>
+
+
+    <tr><th>Class Name</th><th>Teacher</th><th>Assignments</th></tr>
+         <% @courses.each do |course| %>
+    <div><tr><td>
+    <strong><%= course.course_name %> </strong>
+    
+    </div>
+
+    <td>
+        <p><%= course.teacher_name %></p>
+    </td>
+
+    <td>
+        <div>
+        <style> a{color: blue;}</style>
+           
+            <%= link_to 'Assignments', course_path(course.id) %>
+        </div>
+    </td>
+
+<% end %> </td>
+
     </tr>
-    <tr>
-    <td>  </td>
-    <td> </td>
-    <td> </td>
-    <td> </td>
-    <td> </td>
-    </tr>
+
 </table>
+<br><br>
+<h1>Your Courses:</h1>
+<% @courses.each do |course| %>
+    <div>
+    <%= course.course_name %> - <a href="">View Assignments for this class</a>  &nbsp; &nbsp; &nbsp;  &nbsp;   <a href="">      Add assignments for this class </a><br><br>
+    
+    </div>
+<% end %>
 </center>
 </body>
-<br><br><br>
+
+
 
 <footer align="center">
 
@@ -51,7 +74,6 @@ color: black;
 
 <div class="sidenav">
 <center><h2 style="color: rgb(255, 244, 94);"> Dashboard: </h2>
-<a href="/courses"> View your classes</a> <br><br>
 <a href="/courses/new"> Add a class </a> <br><br>
 <a href="/assignments">View your assignments list</a><br><br>
 <a href="/assignments/new">Add a new assignment</a><br><br>

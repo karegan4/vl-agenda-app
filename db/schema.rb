@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_16_184108) do
+ActiveRecord::Schema.define(version: 2020_12_28_195110) do
 
   create_table "assignments", force: :cascade do |t|
     t.string "assignment_name"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2020_12_16_184108) do
     t.date "due_date"
     t.string "instructions"
     t.integer "user_id"
+    t.string "course_name"
   end
 
   create_table "courses", force: :cascade do |t|

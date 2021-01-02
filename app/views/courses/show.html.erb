@@ -1,5 +1,16 @@
-<h1>Your new course: </h1>
+<head>
+<link rel="stylesheet"  type="text/css" href="/stylesheets/signedin.css">
+</head>
+<h1>Class Page: </h1>
 <h2> <%= @course.course_name %></h2>
-<h4> <%= @course.teacher_name %></h4>
+<h4> Teacher: <%= @course.teacher_name %></h4>
+
+<% @assignments.where("course_name = 'Spanish'").each do |f| %>
+    <%= f.assignment_name %>
+    <%end%>
+<h2> View all assignments for this course: </h2>
+<br><br>
+<%=@course_name%>
 
 <a href="/courses">View all courses</a>
+<br><br><a href="/users/<%=current_user.id%>">Click here to return to your homepage </a>

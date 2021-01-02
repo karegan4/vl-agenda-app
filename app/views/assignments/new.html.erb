@@ -4,6 +4,12 @@
 <h1> Add a new assignment </h1>
 <%= form_for(@assignment) do |f| %>
 
+    <div class="form-group">
+      <%= f.label :course_name, "Class:" %>
+  
+      <%= f.collection_select :course_name, current_user.courses, :course_name, :course_name, prompt: "Please select your class from this dropdown" %>
+    </div>
+
     <%= f.label :assignment_type, "Assignment Type:" %><br>
     <%= f.text_field :assignment_type %><br>
 
@@ -17,6 +23,8 @@
     <%= f.date_field :due_date %> <br><br>
 
     <%= f.hidden_field :user_id, :value => session[:user_id] %>
-  
+
+    
     <%= f.submit %>
-    <% end %>
+    <% end %><br><br>
+    <a href="/users/<%=current_user.id%>">Click here to return to your homepage </a>

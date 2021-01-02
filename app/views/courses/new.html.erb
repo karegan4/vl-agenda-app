@@ -4,13 +4,14 @@
 <h1> Add a new class </h1>
 <%= form_for(@course) do |f| %>
   <%= f.label :course_name, "Class Name:" %>
-  <%= f.text_field :course_name %><br>
+  <%= f.text_field :course_name %><br><br>
 
   <%= f.label :teacher_name, "Teacher:" %>
   <%= f.text_field :teacher_name %><br>
 
   <%= f.hidden_field :user_id, :value => session[:user_id] %>
-  
-  <%= f.submit %>
-  <% end %>
+  <%= f.hidden_field :course_id, :value => session[:course_id] %><br>
 
+  <%= f.submit %>
+  <% end %> <br><br>
+ <a href="/users/<%=current_user.id%>">Click here to return to your homepage </a>

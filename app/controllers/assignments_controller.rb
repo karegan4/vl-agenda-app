@@ -1,10 +1,13 @@
 class AssignmentsController < ApplicationController
     def index
         @assignments = current_user.assignments
+        @courses = current_user.courses
+        
     end
 
     def show
         @assignment = Assignment.find(params[:id])
+        
     end
 
     def new
@@ -36,7 +39,7 @@ class AssignmentsController < ApplicationController
     private
     
     def assignment_params
-        params.require(:assignment).permit(:assignment_name, :assignment_type, :instructions, :due_date, :user_id)
+        params.require(:assignment).permit(:assignment_name, :assignment_type, :instructions, :due_date, :user_id, :course_name)
     end
 
 

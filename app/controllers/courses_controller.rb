@@ -3,10 +3,15 @@ class CoursesController < ApplicationController
     def index
 
         @courses = current_user.courses
+        
+
     end
 
     def show
         @course = Course.find(params[:id])
+        @course_name = @course.course_name.to_s
+        @assignments = current_user.assignments
+        
     end
 
     def new

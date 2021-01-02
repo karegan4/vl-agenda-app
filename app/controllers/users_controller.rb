@@ -16,7 +16,8 @@ class UsersController < ApplicationController
 
     def show
             @user = User.find_by(id: params[:id])
-
+            @courses = current_user.courses
+            @assignments = current_user.assignments
     end
 
     #display all registered users

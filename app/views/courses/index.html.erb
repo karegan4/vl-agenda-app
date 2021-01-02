@@ -4,5 +4,8 @@
 
     <h1> All Courses </h1>
         <% @courses.each do |course| %>
-            <div><%= course.course_name %></div>
+            <div>
+            <%= course.course_name %> - <a href="">View Assignments for this course</a><br><br>
+            
+            </div>
         <% end %>

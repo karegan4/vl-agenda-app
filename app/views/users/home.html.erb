@@ -13,7 +13,6 @@
 <table>
 <style> 
 tr{ padding: 100px;
-
 color: white
 }
 tr{
@@ -23,7 +22,7 @@ td{
 background-color: white;
 color: black;
 }
-
+a{ color: white}
 </style>
     <tr>
         <th> Monday </th>
@@ -33,16 +32,27 @@ color: black;
         <th> Friday </th>
     </tr>
     <tr>
-    <td>  </td>
+    <td> 
+        
+        </td>
     <td> </td>
     <td> </td>
     <td> </td>
     <td> </td>
     </tr>
 </table>
+<br><br>
+<h1>Your Courses:</h1>
+<% @courses.each do |course| %>
+    <div>
+    <%= course.course_name %> - <a href="">View Assignments for this class</a>  &nbsp; &nbsp; &nbsp;  &nbsp;   <a href="">      Add assignments for this class </a><br><br>
+    
+    </div>
+<% end %>
 </center>
 </body>
-<br><br><br>
+
+
 
 <footer align="center">
 
@@ -51,7 +61,6 @@ color: black;
 
 <div class="sidenav">
 <center><h2 style="color: rgb(255, 244, 94);"> Dashboard: </h2>
-<a href="/courses"> View your classes</a> <br><br>
 <a href="/courses/new"> Add a class </a> <br><br>
 <a href="/assignments">View your assignments list</a><br><br>
 <a href="/assignments/new">Add a new assignment</a><br><br>
@@ -61,3 +70,4 @@ color: black;
 
   </center>
 </div>
+
